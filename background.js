@@ -15,3 +15,24 @@ chrome.runtime.onInstalled.addListener(function() {
         }]);
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('attempt #3');
+});
+
+
+
+chrome.tabs.onUpdated.addListener(
+function ( tabId, changeInfo, tab )
+{
+  function put_alert()
+  {
+    alert("Warning!");
+  }
+  if (changeInfo.status === "complete")
+  {
+    chrome.tabs.executeScript(null, { code: "put_alert()" }, function() {
+       console.log("console.log(attempt #5)");
+   });
+  }
+});
