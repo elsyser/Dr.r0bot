@@ -41,7 +41,7 @@ chrome.tabs.onUpdated.addListener(
     if (changeInfo.status === "complete")
     {
       // checkContent(tab.url);
-      if (tab.url.indexOf('https') > -1 && tab.url.indexOf("chrome://") > -1)
+      if (tab.url.indexOf('https') > -1 || tab.url.indexOf("chrome://") > -1)
       {
           let test = 1;
       }
