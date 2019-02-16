@@ -20,19 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('attempt #3');
 });
 
-
+document.onload = function() {
+  var put_alert = function()
+  {
+    alert("Warning!");
+  }
+}
 
 chrome.tabs.onUpdated.addListener(
 function ( tabId, changeInfo, tab )
 {
-  function put_alert()
-  {
-    alert("Warning!");
-  }
   if (changeInfo.status === "complete")
   {
-    chrome.tabs.executeScript(null, code : "console.log('#4');", function() {
-       console.log("console.log(attempt #5)");
+    put_alert();
+
+    chrome.tabs.executeScript(null, { code: "console.log('attempt #4');" }, function() {
+       put_alert();
    });
   }
 });
