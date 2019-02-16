@@ -7,6 +7,8 @@ $(document).ready(function () {
   // let passCheck = document.getElementById("pass");
   // let wifiCheck = document.getElementById("wifi");
 
+	alert('sdjask');
+
 	let sslValue = chrome.storage.local.get(["ssl"]);
 	let passValue = chrome.storage.local.get(["pass"]);
 	let wifiValue = chrome.storage.local.get(["wifi"]);
@@ -14,6 +16,7 @@ $(document).ready(function () {
 	$('#ssl').checked = sslValue;
 	$('#pass').checked = passValue;
 	$('#wifi').checked = wifiValue;
+
 
 	$('#ssl').click(function () {
 		sslValue += 1;

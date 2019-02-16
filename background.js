@@ -45,6 +45,7 @@ chrome.tabs.onUpdated.addListener(
   {
     if (changeInfo.status === "complete")
     {
+      alert("dsads");
       if (wifi)
       {
         alert("You are connected to an UNSECURE wireless network!\n" +
