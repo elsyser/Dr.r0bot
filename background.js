@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('attempt #3');
 });
 
+
 document.onload = function() {
   var put_alert = function()
   {
@@ -27,15 +28,23 @@ document.onload = function() {
   }
 }
 
-chrome.tabs.onUpdated.addListener(
-function ( tabId, changeInfo, tab )
-{
-  if (changeInfo.status === "complete")
-  {
-    put_alert();
 
-    chrome.tabs.executeScript(null, { code: "console.log('attempt #4');" }, function() {
-       put_alert();
-   });
-  }
+chrome.tabs.onUpdated.addListener(
+    function ( tabId, changeInfo, tab )
+    {
+        if (changeInfo.status === "complete")
+      {
+          //alert(tab.url);
+          if (tab.url.indexOf('https') > -1)
+          {
+              //alert("Warning!");
+              let test = 1;
+          }
+          else {
+              alert("Warning! This site is not using a SLL certificate!");
+          }
+        //chrome.tabs.executeScript(null, { code: "console.log('attempt #4');" }, function() {
+        //   put_alert();
+       //});
+      }
 });
