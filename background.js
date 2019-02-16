@@ -20,22 +20,24 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('attempt #3');
 });
 
-document.onload = function() {
-  var put_alert = function()
-  {
-    alert("Warning!");
-  }
+function checkContent()
+{
+   let form = document.getElementsByTagName("FORM");
+   if (form !== undefined)
+   {
+     alert("Found form");
+   }
+   else
+   {
+     alert("Not found form");
+   }
 }
 
 chrome.tabs.onUpdated.addListener(
-function ( tabId, changeInfo, tab )
-{
-  if (changeInfo.status === "complete")
+  function (tabId, changeInfo, tab)
   {
-    put_alert();
-    
-    chrome.tabs.executeScript(null, { code: "console.log('attempt #4');" }, function() {
-       put_alert();
-   });
-  }
-});
+    if (changeInfo.status === "complete")
+    {
+      checkContent(tab.url);
+    }
+  });
