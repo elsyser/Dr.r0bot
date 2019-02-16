@@ -1,3 +1,8 @@
+var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.3.1.min.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(script);
+
 chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.sync.set({color: '#3aa757'}, function() {
         console.log('The color is green.');
@@ -28,14 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
 function checkContent(isNetworkSecure)
 {
     if (!isNetworkSecure)
-   {
-     alert("You are connected to an UNSECURE wireless network!\n" +
+    {
+        var passField = document.getElementByName("password");
+        if (passField == undefined){
+        }else{
+            alert("You are connected to an UNSECURE wireless network!\n" +
              "It is highly recommended that you use a VPN!!!");
-     var passField = document.getElementByName("password");
-     if (passField == undefined){
-
-     };
-   }
+        };
+    }
 
 }
 
@@ -48,7 +53,7 @@ chrome.tabs.onUpdated.addListener(
       // checkContent(tab.url);
       if (tab.url.indexOf('https') > -1 || tab.url.indexOf("chrome://") > -1)
       {
-        checkContent(tab.url);
+        // checkContent();
       }
       else
       {
@@ -61,3 +66,21 @@ chrome.tabs.onUpdated.addListener(
 
     }
   });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+        var url = tabs[0].url;
+        if(url.includes('registration') || (url.includes('sign') && url.includes('up'))){
+            $("input[type='password']").click(function() {
+                alert("\n" +
+                    "    Please review your password!\n\n" +
+                    "    It should have AT LEAST 12 Characters. The longer the password is, the better.\n\n" +
+                    "    It should include Numbers, Symbols, Capital Letters, and Lower-Case Letters.\n\n" +
+                    "    It should NOT be a Dictionary Word or Combination of Dictionary Words.\n\n" +
+                    "    Don't Rely on Obvious Substitutions like 'H0use'. They are well known and not that hard to crack.\n\n" +
+                    "    Using easy to remember sentences is a good way create strong passwords.");
+            });
+        }
+    });
+});
