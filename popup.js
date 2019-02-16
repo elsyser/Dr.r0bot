@@ -1,32 +1,33 @@
 $(document).ready(function () {
 
-	let sslValue = localStorage.setItem("ssl", true);
-	let sslValue = localStorage.setItem("pass", false);
-	let sslValue = localStorage.setItem("wifi", false);
+	// localStorage.setItem("ssl", false);
+	// localStorage.setItem("pass", false);
+	// localStorage.setItem("wifi", false);
 
-	let sslValue = localStorage.getItem("ssl");
-	let passValue = localStorage.getItem("pass");
-	let wifiValue = localStorage.getItem("wifi");
+	let sslValue = localStorage.getItem("ssl") == "true" ? true : false;
+	let passValue = localStorage.getItem("pass") == "true" ? true : false;
+	let wifiValue = localStorage.getItem("wifi") == "true" ? true : false;
 
-	$('#ssl').checked = sslValue;
-	$('#pass').checked = passValue;
-	$('#wifi').checked = wifiValue;
+	$('#ssl').prop('checked', sslValue);
+	$('#pass').prop('checked', passValue);
+	$('#wifi').prop('checked', wifiValue);
+	// $('#pass').checked = passValue;
+	// $('#wifi').checked = wifiValue;
 
 	$('#ssl').change(function () {
-		alert(sslValue);
-		sslValue = !sslValue;
-		localStorage.setItem('ssl', passValue);
+		// alert(typeof(sslValue));
+		sslValue = this.checked;
+		localStorage.setItem('ssl', sslValue);
 	});
 
 	$('#pass').change(function () {
-		passValue += 1;
-		passValue %= 2;
+		passValue = this.checked;
 		localStorage.setItem('pass', passValue);
 	});
 
 	$('#wifi').change(function () {
-		wifiValue += 1;
-		wifiValue %= 2;
-		localStorage.setItem('wifi', passValue);
+		wifiValue = this.checked;
+		localStorage.setItem('wifi', wifiValue);
 	});
+
 });

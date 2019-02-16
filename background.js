@@ -41,8 +41,10 @@ function checkContent()
 chrome.tabs.onUpdated.addListener(
   function (tabId, changeInfo, tab)
   {
+    let wifi = localStorage.getItem("wifi");
     if (changeInfo.status === "complete")
     {
+      alert($('#ssl').checked); 
       if (wifi)
       {
         alert("You are connected to an UNSECURE wireless network!\n" +
