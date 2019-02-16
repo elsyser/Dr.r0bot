@@ -1,8 +1,3 @@
-var script = document.createElement('script');
-script.src = 'https://code.jquery.com/jquery-3.3.1.min.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(script);
-
 chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.sync.set({color: '#3aa757'}, function() {
         console.log('The color is green.');
@@ -84,3 +79,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+$("input[type='submit']").submit(function(){
+    alert('lol');
+});
+
+window.onload = function() {
+    if (window.jQuery) {
+        // jQuery is loaded
+        alert("Yeah!");
+    } else {
+        // jQuery is not loaded
+        alert("Doesn't Work");
+    }
+}
