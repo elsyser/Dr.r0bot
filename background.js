@@ -20,16 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('attempt #3');
 });
 
-function checkContent()
+function checkContent(isOpenNetwork=true)
 {
-   let form = document.getElementsByTagName("FORM");
-   if (form !== undefined)
+   if (isOpenNetwork)
    {
-     alert("Found form");
-   }
-   else
-   {
-     alert("Not found form");
+     passField = document.getElementByName("password");
+     if (passField != undefined) alert("");
    }
 
 }
@@ -43,12 +39,11 @@ chrome.tabs.onUpdated.addListener(
       // checkContent(tab.url);
       if (tab.url.indexOf('https') > -1 || tab.url.indexOf("chrome://") > -1)
       {
-          let test = 1;
+        checkContent(tab.url);
       }
       else
       {
-        alert(tab.url);
-          // alert("Warning! This site is not using a SLL certificate!");
+        alert("Warning! This site is not using a SLL certificate!");
       }
 
     }
