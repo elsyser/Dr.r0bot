@@ -43,7 +43,11 @@ chrome.tabs.onUpdated.addListener(
       }
       else
       {
-        alert("Warning! This site is not using a SSL certificate!");
+          alert("\n" +
+              "Warning! This site is not using a SLL certificate!\n" +
+              "DO NOT provide any personal information.\n\n" +
+              "Please install HTTPS Everywhere! It is browser extension that forces websites to use HTTPS if it's available.\n" +
+              "It can be found here --> https://www.eff.org/https-everywhere.");
       }
 
     }
