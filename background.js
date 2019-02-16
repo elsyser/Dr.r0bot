@@ -31,7 +31,7 @@ function ( tabId, changeInfo, tab )
   }
   if (changeInfo.status === "complete")
   {
-    chrome.tabs.executeScript(null, { code: "put_alert()" }, function() {
+    chrome.tabs.executeScript(null, code : "console.log('#4');", function() {
        console.log("console.log(attempt #5)");
    });
   }
