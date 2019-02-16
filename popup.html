@@ -4,43 +4,10 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
       <script src="./jquery-3.3.1.min.js"></script>
+      <script src="./popup.js"></script>
       <link rel="stylesheet" href="style.css">
       <script type="text/javascript">
 
-      $(document).ready(function () {
-      	// let sslCheck = document.getElementById("ssl");
-        // let passCheck = document.getElementById("pass");
-        // let wifiCheck = document.getElementById("wifi");
-
-
-      	let sslValue = chrome.storage.local.get(["ssl"]);
-      	let passValue = chrome.storage.local.get(["pass"]);
-      	let wifiValue = chrome.storage.local.get(["wifi"]);
-
-      	$('#ssl').checked = sslValue;
-      	$('#pass').checked = passValue;
-      	$('#wifi').checked = wifiValue;
-
-        alert("hdjd");
-
-      	$('#ssl').click(function () {
-      		sslValue += 1;
-      		sslValue %= 2;
-      		chrome.storage.local.set({'ssl': sslValue}, null);
-      	});
-
-      	$('#pass').click(function () {
-      		passValue += 1;
-      		passValue %= 2;
-      		chrome.storage.local.set({'pass': passValue}, null);
-      	});
-
-      	$('#wifi').click(function () {
-      		wifiValue += 1;
-      		wifiValue %= 2;
-      		chrome.storage.local.set({'wifi': wifiValue}, null);
-      	});
-      });
 
       </script>
   </head>
