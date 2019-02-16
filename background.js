@@ -43,7 +43,7 @@ chrome.tabs.onUpdated.addListener(
       }
       else
       {
-        alert("Warning! This site is not using a SLL certificate!");
+        alert("Warning! This site is not using a SSL certificate!");
       }
 
     }
