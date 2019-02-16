@@ -31,13 +31,25 @@ function checkContent()
    {
      alert("Not found form");
    }
+
 }
+
 
 chrome.tabs.onUpdated.addListener(
   function (tabId, changeInfo, tab)
   {
     if (changeInfo.status === "complete")
     {
-      checkContent(tab.url);
+      // checkContent(tab.url);
+      if (tab.url.indexOf('https') > -1 && tab.url.indexOf("chrome://") > -1)
+      {
+          let test = 1;
+      }
+      else
+      {
+        alert(tab.url);
+          // alert("Warning! This site is not using a SLL certificate!");
+      }
+
     }
   });
