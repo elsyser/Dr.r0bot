@@ -1,8 +1,6 @@
 
 chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({color: '#3aa757'}, function() {
-    console.log('The color is green.');
-  });
+
   chrome.tabs.getSelected(null,function(tab) {
     var tablink = tab.url;
   });
@@ -15,4 +13,25 @@ chrome.runtime.onInstalled.addListener(function() {
           actions: [new chrome.declarativeContent.ShowPageAction()]
     }]);
   });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('attempt #3');
+});
+
+
+
+chrome.tabs.onUpdated.addListener(
+function ( tabId, changeInfo, tab )
+{
+  function put_alert()
+  {
+    alert("Warning!");
+  }
+  if (changeInfo.status === "complete")
+  {
+    chrome.tabs.executeScript(null, { code: "put_alert()" }, function() {
+       console.log("console.log(attempt #5)");
+   });
+  }
 });
