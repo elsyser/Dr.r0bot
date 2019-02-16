@@ -17,15 +17,24 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('attempt #3');
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", 'http://localhost:6969/networkConnections', false ); // false for synchronous request
+    xmlHttp.send( null );
+    var networkConnections = xmlHttp.responseText;
+    // alert(networkConnections);
+    checkContent(networkConnections[0].security);
 });
 
-function checkContent(isOpenNetwork=true)
+function checkContent(isNetworkSecure)
 {
-   if (isOpenNetwork)
+    if (!isNetworkSecure)
    {
-     passField = document.getElementByName("password");
-     if (passField != undefined) alert("");
+     alert("You are connected to an UNSECURE wireless network!\n" +
+             "It is highly recommended that you use a VPN!!!");
+     var passField = document.getElementByName("password");
+     if (passField == undefined){
+
+     };
    }
 
 }
