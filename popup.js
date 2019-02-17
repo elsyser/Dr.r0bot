@@ -11,11 +11,9 @@ $(document).ready(function () {
 	$('#ssl').prop('checked', sslValue);
 	$('#pass').prop('checked', passValue);
 	$('#wifi').prop('checked', wifiValue);
-	// $('#pass').checked = passValue;
-	// $('#wifi').checked = wifiValue;
 
 	$('#ssl').change(function () {
-		// alert(typeof(sslValue));
+		alert("ghgjhg");
 		sslValue = this.checked;
 		localStorage.setItem('ssl', sslValue);
 	});

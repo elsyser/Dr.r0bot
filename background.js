@@ -39,13 +39,23 @@ function checkContent(isNetworkSecure)
 
 }
 
+//global sslValue;
 
 chrome.tabs.onUpdated.addListener(
   function (tabId, changeInfo, tab)
   {
+    
     if (changeInfo.status === "complete")
     {
       // checkContent(tab.url);
+
+      // let sslValue = false;
+      // let passValue = false;
+      // let wifiValue = false;
+      // chrome.storage.sync.get(/* String or Array */["ssl"], function(items){
+      //         sslValue = items[0];
+      // });
+
       if (tab.url.indexOf('https') > -1 || tab.url.indexOf("chrome://") > -1)
       {
         // checkContent();
@@ -57,9 +67,9 @@ chrome.tabs.onUpdated.addListener(
               "DO NOT provide any personal information.\n\n" +
               "Please install HTTPS Everywhere! It is browser extension that forces websites to use HTTPS if it's available.\n" +
               "It can be found here --> https://www.eff.org/https-everywhere.");
-      }
 
-    }
+
+    }}
   });
 
 
@@ -80,16 +90,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-$("input[type='submit']").submit(function(){
-    alert('lol');
-});
-
-window.onload = function() {
-    if (window.jQuery) {
-        // jQuery is loaded
-        alert("Yeah!");
-    } else {
-        // jQuery is not loaded
-        alert("Doesn't Work");
-    }
-}
