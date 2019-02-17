@@ -39,23 +39,13 @@ function checkContent(isNetworkSecure)
 
 }
 
-//global sslValue;
-
 chrome.tabs.onUpdated.addListener(
   function (tabId, changeInfo, tab)
   {
-    
+
     if (changeInfo.status === "complete")
     {
-      // checkContent(tab.url);
-
-      // let sslValue = false;
-      // let passValue = false;
-      // let wifiValue = false;
-      // chrome.storage.sync.get(/* String or Array */["ssl"], function(items){
-      //         sslValue = items[0];
-      // });
-
+  
       if (tab.url.indexOf('https') > -1 || tab.url.indexOf("chrome://") > -1)
       {
         // checkContent();
@@ -89,4 +79,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
