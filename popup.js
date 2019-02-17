@@ -4,16 +4,16 @@ $(document).ready(function () {
 	// localStorage.setItem("pass", false);
 	// localStorage.setItem("wifi", false);
 
+	alert("ghgjhg");
 	let sslValue = localStorage.getItem("ssl") == "true" ? true : false;
 	let passValue = localStorage.getItem("pass") == "true" ? true : false;
 	let wifiValue = localStorage.getItem("wifi") == "true" ? true : false;
 
-	$('#ssl').prop('checked', sslValue);
+	$('#ssl').prop('checked', true);
 	$('#pass').prop('checked', passValue);
 	$('#wifi').prop('checked', wifiValue);
 
 	$('#ssl').change(function () {
-		alert("ghgjhg");
 		sslValue = this.checked;
 		localStorage.setItem('ssl', sslValue);
 	});
